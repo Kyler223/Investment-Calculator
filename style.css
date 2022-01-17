@@ -5,8 +5,14 @@ body {
 
 label {
     font-size: 20px;
-    margin-left: 20px;
+    margin-left: 25px;
+    margin-right: 5px;
     color:rgb(255, 255, 255)
+}
+
+#everyContribution {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 button {
@@ -27,4 +33,12 @@ button:hover {
 #barChart {
     width: 100%;
     max-width: 900px
+}
+
+table {
+    margin-left: 25px;
+}
+
+th, td {
+    padding: 10px;
 }

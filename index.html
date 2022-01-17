@@ -9,7 +9,7 @@
         <script type = "text/javascript" src="calculating-the-investment.js"></script>  
     </head>
     <body>
-        <form action="/action_page.php"> <!--FIX-->
+        <form>
             <!--starting amount-->
             <label for="startAmount">Starting Amount: </label>
             <input onchange="calculateInvestment()" type="text" id="startAmount" name="startAmountInput">
@@ -18,7 +18,7 @@
             <label for="contribution">Contribution: </label>
             <input onchange="calculateInvestment()" type="text" id="contribution" name="contribution">
             <!--date select-->
-            <label for="date-select">every </label>
+            <label id="everyContribution" for="date-select">every</label>
             <select onchange="calculateInvestment()" name="date" id="date-select">
                 <option value="year">Year</option>
                 <option value="month">Month</option>
@@ -39,5 +39,22 @@
         </form>
         <!--bar chart-->
         <canvas id="barChart"></canvas>
+        <table id="tableOfData">
+            <tr>
+                <th>Year Start</th>
+                <th>Contribution Total</th>
+                <th>Year End</th>
+            </tr>
+            <tr>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+            </tr>
+            <tr>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+            </tr>
+        </table>
     </body>
 </html>

@@ -42,14 +42,14 @@ function calculateInvestment() {
                         label: '$',
                         data: amountArray,
                         backgroundColor: [
-                            'rgba(153, 255, 153, 1)'
+                            'rgba(146, 255, 170, 1)'
                         ],
                         borderColor: [
-                            'rgba(153, 255, 153, 1)'
+                            'rgba(146, 255, 170, 1)'
                         ],
                         borderWidth: 1,
                         hoverBorderWidth: 2,
-                        hoverBorderColor: 'rgba(153, 255, 153, 1)'
+                        hoverBorderColor: 'rgba(131, 226, 152, 1)'
                     }]
                 },
                 options: {
