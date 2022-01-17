@@ -14,8 +14,8 @@ function calculateInvestment() {
                     case 'day': contributionConvered = contributionAmount * 365; break;
                     case 'week': contributionConvered = contributionAmount * 52; break;
                     case 'month': contributionConvered = contributionAmount * 12; break;
-                    case 'year': contributionConvered = contributionAmount; break;
-                } 
+                    case 'year': contributionConvered = contributionAmount * 1; break;  //need to x1 bc it doesn't work otherwise
+                }
             }
             else if (isNaN(contributionAmount)) {alert(`'${contributionAmount}' is not a number. Contribution was ignored.`)}
             else if (contributionAmount < 0) {alert(`'${contributionAmount}' is not greater than 0. Contribution was ignored.`)}
