@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Investment Calculator</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.">
+        <script type = "text/javascript" src="calculating-the-investment.js"></script>  
+    </head>
+    <body  style="background-color: rgb(43, 42, 51)">
+        <form action="/action_page.php"> <!--FIX-->
+            <!--starting amount-->
+            <label for="startAmount" style="color:rgb(255, 255, 255)">Starting Amount: </label>
+            <input onchange="calculateInvestment()" type="text" id="startAmount" name="startAmountInput">
+            <br><br>
+            <!--contribution-->
+            <label for="contribution" style="color:rgb(255, 255, 255)">Contribution: </label>
+            <input onchange="calculateInvestment()" type="text" id="contribution" name="contribution">
+            <!--date select-->
+            <label for="date-select" style="color:rgb(255, 255, 255)">every </label>
+            <select onchange="calculateInvestment()" name="date" id="date-select">
+                <option value="year">Year</option>
+                <option value="month">Month</option>
+                <option value="week">Week</option>
+                <option value="day">Day</option>
+            </select>
+            <br><br>
+            <!--interest rate-->
+            <label for="interest-rate" style="color:rgb(255, 255, 255)">Interest Rate: </label>
+            <input onchange="calculateInvestment()" type="text" id="interest-rate" name="interest-rateInput">
+            <br><br>
+            <!--years of growth-->
+            <label for="years-of-growth" style="color:rgb(255, 255, 255)">Years Of Growth: </label>
+            <input onchange="calculateInvestment()" type="text" id="years-of-growth" name="years-of-growthInput">
+            <br><br>
+            <button type="button" id="button" onclick="calculateInvestment()">Submit</button>
+            <br><br>
+        </form>
+        <!--bar chart-->
+        <canvas id="barChart" style="width:100%;max-width:900px"></canvas>
+    </body>
+</html>
