@@ -7,7 +7,7 @@ label {
     font-size: 20px;
     margin-left: 25px;
     margin-right: 5px;
-    color:rgb(255, 255, 255)
+    color: white;
 }
 
 #everyContribution {
@@ -32,19 +32,38 @@ button:hover {
 
 #barChart {
     width: 100%;
-    max-width: 900px
-}
-
-table {
+    height: 100%;
+    max-width: 900px;
+    max-height: 900px;
     margin-left: auto;
     margin-right: auto;
 }
 
+table {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border: 2px solid gray;
+    border-radius: 8px;
+
+}
+
 th, td {
     padding: 16px;
+    border-left:solid gray 1px;
+    border-top:solid gray 1px;
 }
 
 table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+    color: white;
+}
+
+th {
+    background-color: rgb(59, 75, 59);
+    border-top: none;
+}
+
+td:first-child, th:first-child {
+     border-left: none;
 }
