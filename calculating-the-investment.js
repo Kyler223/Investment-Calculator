@@ -1,14 +1,15 @@
 function calculateInvestment() {
+    //get all inputs from user
     var startAmount = document.getElementById('startAmount').value;
     var contributionAmount = document.getElementById('contribution').value;
     var contributionDateSelect = document.getElementById('date-select').value;
     var interestRate = document.getElementById('interest-rate').value;
     var yearsOfGrowth = document.getElementById('years-of-growth').value;
-
+    //make sure data is a number and is greater than -1
     if(!isNaN(startAmount) && !isNaN(interestRate) && !isNaN(yearsOfGrowth)){
         if(startAmount >= 0 && interestRate >= 0 && yearsOfGrowth > 0){
             var contributionConvered = 0;
-
+            //calculate contribution for the year
             if(!isNaN(contributionAmount) && contributionAmount > 0){
                 switch(contributionDateSelect){
                     case 'day': contributionConvered = contributionAmount * 365; break;
@@ -25,44 +26,15 @@ function calculateInvestment() {
             var contributionArray = [];
             var interestArray = [];
 
+            //get the data into an array
             for(var i = 0; i < yearsOfGrowth; i++) {
                 var percentIncrease = (interestRate / 100) + 1;
                 var totalForYear = (amountArray[i] * percentIncrease) + contributionConvered;
                 amountArray.push(Math.round(totalForYear * 100) / 100);
                 labelArray.push(`Year ${i + 1}`);
             }
-
-            var ctx = document.getElementById('barChart').getContext('2d');
-
-            var chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labelArray,
-                    datasets: [{
-                        label: '$',
-                        data: amountArray,
-                        backgroundColor: [
-                            'rgba(146, 255, 170, 1)'
-                        ],
-                        borderColor: [
-                            'rgba(146, 255, 170, 1)'
-                        ],
-                        borderWidth: 1,
-                        hoverBorderWidth: 2,
-                        hoverBorderColor: 'rgba(131, 226, 152, 1)'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-            // updateChart(amountArray);
+            //chart/log all the other data in other functions
+            chartData(amountArray, labelArray)
         } 
     }
     else {
@@ -75,7 +47,39 @@ function calculateInvestment() {
     }
 }
 
-// function updateChart(amountArray){
-//     chart.data.datasets[0].data = amountArray;
-//     chart.update();
-// }
+//puts data into the bar chart
+function chartData(amountArray, labelArray){
+    var ctx = document.getElementById('barChart').getContext('2d');
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labelArray,
+            datasets: [{
+                label: '$',
+                data: amountArray,
+                backgroundColor: [
+                    'rgba(146, 255, 170, 1)'
+                ],
+                borderColor: [
+                    'rgba(146, 255, 170, 1)'
+                ],
+                borderWidth: 1,
+                hoverBorderWidth: 2,
+                hoverBorderColor: 'rgba(131, 226, 152, 1)'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function logData() {
+
+}
