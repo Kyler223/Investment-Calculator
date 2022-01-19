@@ -102,7 +102,7 @@ function logData(interestRate, contribution, amountArray, interestArray) {
             //table body
             else {
                 switch(p) {
-                    case 0: html +=  `<td>${i - 1}</td>`; break; //year
+                    case 0: html +=  `<td>${i}</td>`; break; //year
                     case 1: html += `<td>$${amountArray[i - 1]}</td>`; break; //start amount
                     case 2: html += `<td>$${interestArray[i]}</td>`; break; //interest in dollars
                     case 3: html += `<td>$${contribution}</td>`; break; //contribution
