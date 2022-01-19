@@ -24,7 +24,7 @@ function calculateInvestment() {
             var amountArray = [startAmount];
             var labelArray = [`Year 0`];
             var contributionArray = [];
-            var interestArray = [];
+            var interestArray = [interestRate];
 
             //get the data into an array
             for(var i = 0; i < yearsOfGrowth; i++) {
@@ -32,9 +32,11 @@ function calculateInvestment() {
                 var totalForYear = (amountArray[i] * percentIncrease) + contributionConvered;
                 amountArray.push(Math.round(totalForYear * 100) / 100);
                 labelArray.push(`Year ${i + 1}`);
+                interestArray.push(Math.round((amountArray[i] * (interestRate / 100) * 100)) / 100);
             }
             //chart/log all the other data in other functions
-            chartData(amountArray, labelArray)
+            chartData(amountArray, labelArray);
+            logData(interestRate, contributionConvered, amountArray, interestArray);
         } 
     }
     else {
@@ -80,6 +82,48 @@ function chartData(amountArray, labelArray){
     });
 }
 
-function logData() {
+function logData(interestRate, contribution, amountArray, interestArray) {
+    var table = document.getElementById('tableOfData');
+    var html = '';
+    var headStart = false;
+    var headEnd = false;
+    //cycle through rows
+    for(var i = 0; i < amountArray.length; i++) {
 
+        //cycle through cells in the row
+        for(var p = 0; p < table.rows[i].cells.length; p++) {
+            //table head
+            if(i === 0) {
+                if(headStart === false) {
+                    html += '<tr>'
+                    headStart = true;
+                }
+                // table.insertRow(5);
+                switch(p) {
+                    case 0: table.rows[i].cells[p].innerHTML = "Year"; break;
+                    case 1: table.rows[i].cells[p].innerHTML = "Start Amount"; break;
+                    case 2: table.rows[i].cells[p].innerHTML = `${interestRate}% Interest`; break;
+                    case 3: table.rows[i].cells[p].innerHTML = "Contribution"; break;
+                    case 4: table.rows[i].cells[p].innerHTML = "End Amount"; break;
+                }
+            }
+            //table body
+            else {
+                if(headEnd === false) {
+                    html += '</tr>'
+                    headEnd = true;
+                }
+                // table.insertRow(5);
+                switch(p) {
+                    case 0: table.rows[i].cells[p].innerHTML = i - 1; break; //year
+                    case 1: table.rows[i].cells[p].innerHTML = `$${amountArray[i - 1]}`; break; //start amount
+                    case 2: table.rows[i].cells[p].innerHTML = `$${interestArray[i]}`; break; //interest in dollars
+                    case 3: table.rows[i].cells[p].innerHTML = `$${contribution}`; break; //contribution
+                    case 4: table.rows[i].cells[p].innerHTML = `$${amountArray[i]}`; break; //end amount
+                }
+            }
+            //maybe table footer for totals?
+        }
+        
+    }
 }
