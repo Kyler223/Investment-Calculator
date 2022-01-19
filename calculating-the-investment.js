@@ -83,7 +83,7 @@ function chartData(amountArray, labelArray){
 }
 
 function logData(interestRate, contribution, amountArray, interestArray) {
-    var html = '';
+    var html = '<table id="tableOfData">';
     //cycle through rows
     for(var i = 0; i < amountArray.length; i++) {
         html += '<tr>';
@@ -111,8 +111,9 @@ function logData(interestRate, contribution, amountArray, interestArray) {
             }
             //maybe table footer for totals?
         }
-        html += '</tr>'
+        html += '</tr>';
     }
-    var table = document.getElementById('tableOfData');
-    table.innerHTML = html;
+    html += '</table>';
+    var tableDiv = document.getElementById('tableDiv');
+    tableDiv.innerHTML = html;
 }
