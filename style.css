@@ -17,11 +17,14 @@ form
     text-align: left;
 }
 
-#labels {
+/* all 3 divs in the header */
+
+.labels {
     float: left;
     color: white;
     font-size: 19px;
     text-align: right;
+    line-height: 28px;
 }
 
 .inputs {
@@ -30,43 +33,41 @@ form
     font-size: 17px;
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 2px;
 }
 
-#everyContributionDiv {
+.everyContributionDiv {
     float: right;
-    margin-top: 2px;
-}
-
-.marginTop {
-    margin-top: 17px;
-}
-
-#everyContribution {
-    /* margin-left: 10px;
-    margin-right: 10px; */
+    padding-top: 8px;
     color: white;
+}
+
+.labels, .inputs, .everyContributionDiv {
+    margin-top: 15px;
 }
 
 input {
     font-size: 14px;
     inline-size: 130px;
+    margin-bottom: 4.5px;
 }
 
 select {
     font-size: 14px;
     margin-left: 5px;
+    margin-right: 35px;
     padding: 1px;
 }
 
+/* submit button */
 button {
     font-family: Verdana;
     font-size: 15px;
-    margin-left: 20px;
     background-color: rgb(117, 206, 136);
     border: none;
     border-radius: 10px;
     padding: 10px 20px;
-
+    margin: 0 auto;
 }
 
 button:hover {
@@ -74,15 +75,16 @@ button:hover {
 }
 
 #barChart {
-    margin-top: 15px;
     width: 100%;
     height: 100%;
     max-width: 900px;
     max-height: 900px;
+    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* log of the data (table) */
 table {
     margin-top: 50px;
     margin-bottom: 70px;

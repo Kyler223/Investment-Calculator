@@ -11,8 +11,8 @@
     <body>
         <header>
             <form>
-                <div id="labels">
-                    <label for="startAmount">Starting Amount: </label>
+                <div class="labels">
+                    <label id="startAmountLabel" for="startAmount">Starting Amount: </label>
                     <br>
                     <label for="contribution">Contribution: </label>
                     <br>
@@ -29,10 +29,9 @@
                     <input onchange="calculateInvestment()" type="text" id="interest-rate" name="interest-rateInput">
                     <br>
                     <input onchange="calculateInvestment()" type="text" id="years-of-growth" name="years-of-growthInput">
-                    <br>
                 </div>
 
-                <div id="everyContributionDiv">
+                <div class="everyContributionDiv">
                     <br>
                     <label id="everyContribution" for="date-select">every</label>
                     <select onchange="calculateInvestment()" name="date" id="date-select">
