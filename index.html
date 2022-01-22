@@ -9,34 +9,44 @@
         <script type = "text/javascript" src="calculating-the-investment.js"></script>  
     </head>
     <body>
-        <form>
-            <!--starting amount-->
-            <label for="startAmount" class="marginTop">Starting Amount: </label>
-            <input onchange="calculateInvestment()" class="marginTop" type="text" id="startAmount" name="startAmountInput">
-            <br><br>
-            <!--contribution-->
-            <label for="contribution">Contribution: </label>
-            <input onchange="calculateInvestment()" type="text" id="contribution" name="contribution">
-            <!--date select-->
-            <label id="everyContribution" for="date-select">every</label>
-            <select onchange="calculateInvestment()" name="date" id="date-select">
-                <option value="year">Year</option>
-                <option value="month">Month</option>
-                <option value="week">Week</option>
-                <option value="day">Day</option>
-            </select>
-            <br><br>
-            <!--interest rate-->
-            <label for="interest-rate">Interest Rate: </label>
-            <input onchange="calculateInvestment()" type="text" id="interest-rate" name="interest-rateInput">
-            <br><br>
-            <!--years of growth-->
-            <label for="years-of-growth">Years Of Growth: </label>
-            <input onchange="calculateInvestment()" type="text" id="years-of-growth" name="years-of-growthInput">
+        <header>
+            <form>
+                <div id="labels">
+                    <label for="startAmount">Starting Amount: </label>
+                    <br>
+                    <label for="contribution">Contribution: </label>
+                    <br>
+                    <label for="interest-rate">Interest Rate: </label>
+                    <br>
+                    <label for="years-of-growth">Years Of Growth: </label>
+                </div>
+
+                <div class="inputs">
+                    <input onchange="calculateInvestment()" type="text" id="startAmount" name="startAmountInput">
+                    <br>
+                    <input onchange="calculateInvestment()" type="text" id="contribution" name="contribution">
+                    <br>
+                    <input onchange="calculateInvestment()" type="text" id="interest-rate" name="interest-rateInput">
+                    <br>
+                    <input onchange="calculateInvestment()" type="text" id="years-of-growth" name="years-of-growthInput">
+                    <br>
+                </div>
+
+                <div id="everyContributionDiv">
+                    <br>
+                    <label id="everyContribution" for="date-select">every</label>
+                    <select onchange="calculateInvestment()" name="date" id="date-select">
+                        <option value="year">Year</option>
+                        <option value="month">Month</option>
+                        <option value="week">Week</option>
+                        <option value="day">Day</option>
+                    </select>
+                </div>
+            </form>
             <br><br>
             <button type="button" id="button" onclick="calculateInvestment()">Submit</button>
-            <br><br>
-        </form>
+        </header>
+        
         <!--bar chart-->
         <canvas id="barChart"></canvas>
         <!--table log-->

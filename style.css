@@ -3,29 +3,59 @@ body {
     background-color: rgb(43, 42, 51);
 }
 
+header
+{
+    display: block;
+    text-align: center;
+}
+
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#labels {
+    float: left;
+    color: white;
+    font-size: 19px;
+    text-align: right;
+}
+
+.inputs {
+    margin: 0 auto;
+    display: inline-block;
+    font-size: 17px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#everyContributionDiv {
+    float: right;
+    margin-top: 2px;
+}
+
 .marginTop {
     margin-top: 17px;
 }
 
-label {
-    font-size: 19px;
-    margin-left: 25px;
-    margin-right: 5px;
-    color: white;
-}
-
 #everyContribution {
-    margin-left: 10px;
-    margin-right: 10px;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    color: white;
 }
 
 input {
     font-size: 14px;
+    inline-size: 130px;
 }
 
 select {
     font-size: 14px;
-    padding: 5px;
+    margin-left: 5px;
+    padding: 1px;
 }
 
 button {

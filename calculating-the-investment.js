@@ -1,3 +1,5 @@
+var chart;
+
 function calculateInvestment() {
     //get all inputs from user
     var startAmount = document.getElementById('startAmount').value;
@@ -52,8 +54,10 @@ function calculateInvestment() {
 //puts data into the bar chart
 function chartData(amountArray, labelArray){
     var ctx = document.getElementById('barChart').getContext('2d');
-
-    var chart = new Chart(ctx, {
+    if(chart != undefined) {
+        chart.destroy();
+    }
+    chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labelArray,
