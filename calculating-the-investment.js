@@ -63,7 +63,7 @@ function totals(amountArray, contributionConvered, interestArray) {
     var  html = '<table id="tableOfTotals">'; 
         html += '<tr>';
             html += `<th>${year}: ${amountArray.length - 1}</th>`
-            html += `<th>Earn Interest: $${totalInterest}</th>`
+            html += `<th>Earn Interest: $${Math.round(totalInterest * 100) / 100}</th>`
             html += `<th>Total Contributed: $${(amountArray.length - 1) * contributionConvered}</th>`
             html += `<th>End Amount: $${amountArray[amountArray.length - 1]}</th>`
         html += '</tr>';
