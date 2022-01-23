@@ -25,7 +25,7 @@ function calculateInvestment() {
 
             var amountArray = [startAmount];
             var labelArray = [`Year 0`];
-            var contributionArray = [];
+            // var contributionArray = [];
             var interestArray = [interestRate];
 
             //get the data into an array
@@ -37,6 +37,7 @@ function calculateInvestment() {
                 interestArray.push(Math.round((amountArray[i] * (interestRate / 100) * 100)) / 100);
             }
             //chart/log all the other data in other functions
+            totals(amountArray, contributionConvered, interestArray);
             chartData(amountArray, labelArray);
             logData(interestRate, contributionConvered, amountArray, interestArray);
         } 
@@ -49,6 +50,25 @@ function calculateInvestment() {
         if(combination.length > 1){alert(`'${combination}' are not a numbers`);}
         else {alert(`'${combination}' is not a number`);}
     }
+}
+
+//sums and give ths total amount by the end of the investment
+function totals(amountArray, contributionConvered, interestArray) {
+    var year = 'Years';
+    if ((amountArray.length - 1) === 1) {year = 'Year';}
+    var totalDiv = document.getElementById('totalsDiv');
+    var totalInterest = 0;
+    var skipFirstNumber = false;
+    interestArray.forEach(num => {if (skipFirstNumber){totalInterest += parseFloat(num);} else {skipFirstNumber = true;}});
+    var  html = '<table id="tableOfTotals">'; 
+        html += '<tr>';
+            html += `<th>${year}: ${amountArray.length - 1}</th>`
+            html += `<th>Earn Interest: $${totalInterest}</th>`
+            html += `<th>Total Contributed: $${(amountArray.length - 1) * contributionConvered}</th>`
+            html += `<th>End Amount: $${amountArray[amountArray.length - 1]}</th>`
+        html += '</tr>';
+    html += '</table>';
+    totalDiv.innerHTML = html;
 }
 
 //puts data into the bar chart
