@@ -25,7 +25,6 @@ function calculateInvestment() {
 
             var amountArray = [startAmount];
             var labelArray = [`Year 0`];
-            // var contributionArray = [];
             var interestArray = [interestRate];
 
             //get the data into an array
@@ -54,18 +53,18 @@ function calculateInvestment() {
 
 //sums and give ths total amount by the end of the investment
 function totals(amountArray, contributionConvered, interestArray) {
-    var year = 'Years';
-    if ((amountArray.length - 1) === 1) {year = 'Year';}
+    var length = amountArray.length - 1;
+    var yearString = (length) === 1 ? 'Year' : 'Years';
     var totalDiv = document.getElementById('totalsDiv');
     var totalInterest = 0;
     var skipFirstNumber = false;
     interestArray.forEach(num => {if (skipFirstNumber){totalInterest += parseFloat(num);} else {skipFirstNumber = true;}});
     var  html = '<table id="tableOfTotals">'; 
         html += '<tr>';
-            html += `<th>${year}: ${amountArray.length - 1}</th>`
+            html += `<th>${yearString}: ${length}</th>`
             html += `<th>Earn Interest: $${Math.round(totalInterest * 100) / 100}</th>`
-            html += `<th>Total Contributed: $${(amountArray.length - 1) * contributionConvered}</th>`
-            html += `<th>End Amount: $${amountArray[amountArray.length - 1]}</th>`
+            html += `<th>Total Contributed: $${(length) * contributionConvered}</th>`
+            html += `<th>End Amount: $${amountArray[length]}</th>`
         html += '</tr>';
     html += '</table>';
     totalDiv.innerHTML = html;
