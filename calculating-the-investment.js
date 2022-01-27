@@ -44,9 +44,10 @@ function calculateInvestment() {
     else {
         var combination = [];
         if(isNaN(startAmount)) {combination.push(startAmount);}
+        if(isNaN(contributionAmount)) {combination.push(contributionAmount);}
         if(isNaN(interestRate)) {combination.push(interestRate);}
         if(isNaN(yearsOfGrowth)) {combination.push(yearsOfGrowth);}
-        if(combination.length > 1){alert(`'${combination}' are not a numbers`);}
+        if(combination.length > 1){alert(`'${combination.join(' ')}' are not a numbers`);}
         else {alert(`'${combination}' is not a number`);}
     }
 }
@@ -58,13 +59,14 @@ function totals(amountArray, contributionConvered, interestArray) {
     var totalDiv = document.getElementById('totalsDiv');
     var totalInterest = 0;
     var skipFirstNumber = false;
+
     interestArray.forEach(num => {if (skipFirstNumber){totalInterest += parseFloat(num);} else {skipFirstNumber = true;}});
     var  html = '<table id="tableOfTotals">'; 
         html += '<tr>';
-            html += `<th>${yearString}: ${length}</th>`
-            html += `<th>Earn Interest: $${Math.round(totalInterest * 100) / 100}</th>`
-            html += `<th>Total Contributed: $${(length) * contributionConvered}</th>`
-            html += `<th>End Amount: $${amountArray[length]}</th>`
+            html += `<th>${yearString}: ${addCommas(length)}</th>`
+            html += `<th>Earn Interest: $${addCommas(Math.round(totalInterest * 100) / 100)}</th>`
+            html += `<th>Total Contributed: $${addCommas((length) * contributionConvered)}</th>`
+            html += `<th>End Amount: $${addCommas(amountArray[length])}</th>`
         html += '</tr>';
     html += '</table>';
     totalDiv.innerHTML = html;
@@ -105,6 +107,7 @@ function chartData(amountArray, labelArray){
     });
 }
 
+//table at the bottom of the website which shows the calulations for every year
 function logData(interestRate, contribution, amountArray, interestArray) {
     var html = '<table id="tableOfData">';
     //cycle through rows
@@ -117,7 +120,7 @@ function logData(interestRate, contribution, amountArray, interestArray) {
                 switch(p) {
                     case 0: html += "<th>Year</th>"; break;
                     case 1: html += "<th>Start Amount</th>"; break;
-                    case 2: html += `<th>${interestRate}% Interest</th>`; break;
+                    case 2: html += `<th>${addCommas(interestRate)}% Interest</th>`; break;
                     case 3: html += "<th>Contribution</th>"; break;
                     case 4: html += "<th>End Amount</th>"; break;
                 }
@@ -125,18 +128,58 @@ function logData(interestRate, contribution, amountArray, interestArray) {
             //table body
             else {
                 switch(p) {
-                    case 0: html +=  `<td>${i}</td>`; break; //year
-                    case 1: html += `<td>$${amountArray[i - 1]}</td>`; break; //start amount
-                    case 2: html += `<td>$${interestArray[i]}</td>`; break; //interest in dollars
-                    case 3: html += `<td>$${contribution}</td>`; break; //contribution
-                    case 4: html += `<td>$${amountArray[i]}</td>`; break; //end amount
+                    case 0: html +=  `<td>${addCommas(i)}</td>`; break; //year
+                    case 1: html += `<td>$${addCommas(amountArray[i - 1])}</td>`; break; //start amount
+                    case 2: html += `<td>$${addCommas(interestArray[i])}</td>`; break; //interest in dollars
+                    case 3: html += `<td>$${addCommas(contribution)}</td>`; break; //contribution
+                    case 4: html += `<td>$${addCommas(amountArray[i])}</td>`; break; //end amount
                 }
             }
-            //maybe table footer for totals?
         }
         html += '</tr>';
     }
     html += '</table>';
     var tableDiv = document.getElementById('tableDiv');
     tableDiv.innerHTML = html;
+}
+
+//adds commas to +4 digit numbers so it's easier to read
+function addCommas(number) {
+    if (parseFloat(number) >= 1000) {
+        var newNumber = '';
+        var decimal;
+        var digits = 0;
+        var numberStr = number.toString();
+
+        if (numberStr.includes('.')) {      //checks if it has cents/a decimal and adds it on the end later
+            decimal = numberStr.split('.');
+            digits = decimal[0].length;
+            numberStr = decimal[0];
+        }
+        else {
+            digits = numberStr.length;
+        }
+
+        var reverse = numberStr.split('').reverse().join('');  //reverses the string to add the commas from the start of the number
+
+        //for loop checks if it has 4 more digits to add another comma
+        for (var i = 3; i + 1 <= digits; i = i + 3) {
+            newNumber += `${reverse[i - 3]}${reverse[i - 2]}${reverse[i - 1]},`
+            //if it doens't have 4 more digits then, add the rest of the digits
+            if(i + 4 > digits) {
+                if(reverse[i] != undefined) {newNumber += `${reverse[i]}`;}
+                if(reverse[i + 1] != undefined) {newNumber += `${reverse[i + 1]}`;}
+                if(reverse[i + 2] != undefined) {newNumber += `${reverse[i + 2]}`;}
+            }
+        }
+
+        newNumber = newNumber.split('').reverse().join('');  //unreverse so it's the correct way
+
+        if (decimal != undefined) {
+            newNumber += `.${decimal[1]}`; //add the decimal/cents back in
+        }
+
+        return newNumber;
+    }
+    return number;
 }

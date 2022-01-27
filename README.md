@@ -3,4 +3,4 @@ This project is a still a work in progress. I hope to finish it within the comin
 
         ~RomeTwinn 12/20/22
 
-![Alt text](screenshot2.png "a screenshot")
+![Alt text](screenshot3.png "a screenshot of the investment calculator")
