@@ -3,25 +3,92 @@ body {
     background-color: rgb(43, 42, 51);
 }
 
-header
-{
+@media screen and (max-width:750px){
+    body {
+        font-size: 14px;
+    }
+
+    input {
+        max-width: 120px;
+        max-height: 16px;
+    }
+    
+    select {
+        max-width: 100px;
+        font-size: 14px;
+    } 
+}
+
+@media screen and (max-width:650px){
+    body {
+        font-size: 12px;
+    }
+
+    input {
+        max-width: 100px;
+        max-height: 15px;
+    }
+
+    select {
+        font-size: 12px;
+        max-width: 80px;
+    } 
+}
+
+@media screen and (max-width:550px){
+    body {
+        font-size: 10px;
+    }
+
+    input {
+        max-width: 90px;
+        max-height: 14px;
+    }
+
+    select {
+        font-size: 10px;
+        max-width: 60px;
+    } 
+}
+
+@media screen and (max-width:500px){
+    body {
+        font-size: 8px;
+    }
+
+    input {
+        max-width: 90px;
+        max-height: 12px;
+    }
+
+    .labels {
+        line-height: 20px;
+    }
+
+    select {
+        font-size: 10px;
+        max-width: 60px;
+    } 
+}
+
+header {
     display: block;
     text-align: center;
 }
 
-form
-{
-    margin-top: 15px;
-    max-width: 600px;
-    display: inline-block;
+form {
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 600px;
+    display: inline-block;
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.16);
     border-radius: 20px;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 /* all 3 divs in the header */
@@ -45,7 +112,7 @@ form
 }
 
 .labels, .inputs, .everyContributionDiv {
-    margin: 15px 0;
+    margin: 12px 0;
 }
 
 input {
@@ -64,15 +131,23 @@ select {
 button {
     font-family: Verdana;
     font-size: 15px;
+    color: black;
     background-color: rgb(117, 206, 136);
     border: none;
     border-radius: 10px;
     padding: 10px 20px;
-    margin: 0 auto;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 
 button:hover {
     background-color: rgb(97, 172, 113);
+}
+
+#tableOfTotals {
+    margin-bottom: 15px;
+    position: relative;
 }
 
 #barChart {
@@ -80,28 +155,22 @@ button:hover {
     height: 100%;
     max-width: 900px;
     max-height: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    position: relative;
 }
 
-/* log of the data (table) */
 table {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     border-collapse: separate;
     border: 2px solid gray;
     border-radius: 8px;
-
-}
-
-#tableOfTotals {
-    margin-top: 40px;
-    margin-bottom: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
 #tableOfData {
     margin-top: 50px;
     margin-bottom: 70px;
+    position: relative;
 }
 
 th, td {
@@ -121,4 +190,26 @@ th {
 
 td:first-child, th:first-child {
      border-left: none;
+}
+
+/* intro page animation*/
+.introAnimation {
+    animation-name: topToPosition;
+    animation-duration: 1s;
+}
+
+@keyframes topToPosition {
+    from {top: -150px; opacity: 0;}
+    to {top: 0px; opacity: 1;}
+}
+
+/* chart and table animation */
+.submitAnimation {
+    animation-name: tableAndChartAnimation;
+    animation-duration: .6s;
+}
+
+@keyframes tableAndChartAnimation {
+    from {margin-top: 70px; opacity: 0;}
+    to {margin-top: 0px; opacity: 1;}
 }

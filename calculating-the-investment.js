@@ -1,4 +1,7 @@
 var chart;
+var totalDiv = document.getElementById('totalsDiv');
+var ctx = document.getElementById('barChart').getContext('2d');
+var tableDiv = document.getElementById('tableDiv');
 
 function calculateInvestment() {
     //get all inputs from user
@@ -39,6 +42,11 @@ function calculateInvestment() {
             totals(amountArray, contributionConvered, interestArray);
             chartData(amountArray, labelArray);
             logData(interestRate, contributionConvered, amountArray, interestArray);
+            
+            //animation
+            totalDiv.setAttribute('class', 'submitAnimation');
+            ctx.setAttribute('class', 'submitAnimation');
+            tableDiv.setAttribute('class', 'submitAnimation');
         } 
     }
     else {
@@ -56,7 +64,6 @@ function calculateInvestment() {
 function totals(amountArray, contributionConvered, interestArray) {
     var length = amountArray.length - 1;
     var yearString = (length) === 1 ? 'Year' : 'Years';
-    var totalDiv = document.getElementById('totalsDiv');
     var totalInterest = 0;
     var skipFirstNumber = false;
 
@@ -74,7 +81,6 @@ function totals(amountArray, contributionConvered, interestArray) {
 
 //puts data into the bar chart
 function chartData(amountArray, labelArray){
-    var ctx = document.getElementById('barChart').getContext('2d');
     if(chart != undefined) {
         chart.destroy();
     }
@@ -139,7 +145,6 @@ function logData(interestRate, contribution, amountArray, interestArray) {
         html += '</tr>';
     }
     html += '</table>';
-    var tableDiv = document.getElementById('tableDiv');
     tableDiv.innerHTML = html;
 }
 
