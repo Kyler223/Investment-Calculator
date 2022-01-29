@@ -1,3 +1,4 @@
+//all divs and charts saved to varibles
 var chart;
 var totalDiv = document.getElementById('totalsDiv');
 var ctx = document.getElementById('barChart').getContext('2d');
@@ -10,34 +11,43 @@ function calculateInvestment() {
     var contributionDateSelect = document.getElementById('date-select').value;
     var interestRate = document.getElementById('interest-rate').value;
     var yearsOfGrowth = document.getElementById('years-of-growth').value;
+
     //make sure data is a number and is greater than -1
     if(!isNaN(startAmount) && !isNaN(interestRate) && !isNaN(yearsOfGrowth)){
         if(startAmount >= 0 && interestRate >= 0 && yearsOfGrowth > 0){
+
             var contributionConvered = 0;
+            
             //calculate contribution for the year
             if(!isNaN(contributionAmount) && contributionAmount > 0){
+                var y = 0;
                 switch(contributionDateSelect){
-                    case 'day': contributionConvered = contributionAmount * 365; break;
-                    case 'week': contributionConvered = contributionAmount * 52; break;
-                    case 'month': contributionConvered = contributionAmount * 12; break;
-                    case 'year': contributionConvered = contributionAmount * 1; break;  //need to x1 bc it doesn't work otherwise
+                    case 'day': y = 365; break;
+                    case 'week': y = 52; break;
+                    case 'month': y = 12; break;
+                    case 'year': y = 1; break;
                 }
+                contributionConvered = contributionAmount * y;
             }
-            else if (isNaN(contributionAmount)) {alert(`'${contributionAmount}' is not a number. Contribution was ignored.`)}
-            else if (contributionAmount < 0) {alert(`'${contributionAmount}' is not greater than 0. Contribution was ignored.`)}
-
-            var amountArray = [startAmount];
-            var labelArray = [`Year 0`];
-            var interestArray = [interestRate];
-
-            //get the data into an array
-            for(var i = 0; i < yearsOfGrowth; i++) {
+                //if the user puts a non number or number that's not greater than 0 gives an alert
+                else if (isNaN(contributionAmount)) {alert(`'${contributionAmount}' is not a number. Contribution was ignored.`);}
+                else if (contributionAmount < 0) {alert(`'${contributionAmount}' is not greater than 0. Contribution was ignored.`);}
+                
+                //arrays
+                var amountArray = [startAmount];
+                var labelArray = [`Year 0`];
+                var interestArray = [interestRate];
+                
+                //get the data into an array
+                for(var i = 0; i < yearsOfGrowth; i++) {
                 var percentIncrease = (interestRate / 100) + 1;
-                var totalForYear = (amountArray[i] * percentIncrease) + contributionConvered;
+                var totalForYear = (amountArray[i] * percentIncrease) + (contributionConvered * percentIncrease);
+
                 amountArray.push(Math.round(totalForYear * 100) / 100);
                 labelArray.push(`Year ${i + 1}`);
-                interestArray.push(Math.round((amountArray[i] * (interestRate / 100) * 100)) / 100);
+                interestArray.push(Math.round(((amountArray[i] * (interestRate / 100) + (contributionConvered * (interestRate / 100))) * 100)) / 100);
             }
+
             //chart/log all the other data in other functions
             totals(amountArray, contributionConvered, interestArray);
             chartData(amountArray, labelArray);
@@ -68,11 +78,12 @@ function totals(amountArray, contributionConvered, interestArray) {
     var skipFirstNumber = false;
 
     interestArray.forEach(num => {if (skipFirstNumber){totalInterest += parseFloat(num);} else {skipFirstNumber = true;}});
+    //creates the totals table with inner html in the totalDiv
     var  html = '<table id="tableOfTotals">'; 
         html += '<tr>';
             html += `<th>${yearString}: ${addCommas(length)}</th>`
-            html += `<th>Earn Interest: $${addCommas(Math.round(totalInterest * 100) / 100)}</th>`
             html += `<th>Total Contributed: $${addCommas((length) * contributionConvered)}</th>`
+            html += `<th>Earned Interest: $${addCommas(Math.round(totalInterest * 100) / 100)}</th>`
             html += `<th>End Amount: $${addCommas(amountArray[length])}</th>`
         html += '</tr>';
     html += '</table>';
@@ -89,7 +100,7 @@ function chartData(amountArray, labelArray){
         data: {
             labels: labelArray,
             datasets: [{
-                label: '$',
+                label: '$',  //should get rid of the ':' in the label
                 data: amountArray,
                 backgroundColor: [
                     'rgba(146, 255, 170, 1)'
@@ -126,8 +137,8 @@ function logData(interestRate, contribution, amountArray, interestArray) {
                 switch(p) {
                     case 0: html += "<th>Year</th>"; break;
                     case 1: html += "<th>Start Amount</th>"; break;
-                    case 2: html += `<th>${addCommas(interestRate)}% Interest</th>`; break;
-                    case 3: html += "<th>Contribution</th>"; break;
+                    case 2: html += "<th>Contribution</th>"; break;
+                    case 3: html += `<th>${addCommas(interestRate)}% Interest</th>`; break;
                     case 4: html += "<th>End Amount</th>"; break;
                 }
             }
@@ -136,8 +147,8 @@ function logData(interestRate, contribution, amountArray, interestArray) {
                 switch(p) {
                     case 0: html +=  `<td>${addCommas(i)}</td>`; break; //year
                     case 1: html += `<td>$${addCommas(amountArray[i - 1])}</td>`; break; //start amount
-                    case 2: html += `<td>$${addCommas(interestArray[i])}</td>`; break; //interest in dollars
-                    case 3: html += `<td>$${addCommas(contribution)}</td>`; break; //contribution
+                    case 2: html += `<td>$${addCommas(contribution)}</td>`; break; //contribution
+                    case 3: html += `<td>$${addCommas(interestArray[i])}</td>`; break; //interest in dollars
                     case 4: html += `<td>$${addCommas(amountArray[i])}</td>`; break; //end amount
                 }
             }
