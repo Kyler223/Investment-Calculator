@@ -10,30 +10,30 @@
     </head>
     <body>
         <header>
-            <form class="introAnimation">
+            <form id="form" class="introAnimation">
                 <div class="labels">
-                    <label id="startAmountLabel" for="startAmount">Starting Amount: </label>
+                    <label id="startAmountLabel">Starting Amount: </label>
                     <br>
-                    <label for="contribution">Contribution: </label>
+                    <label>Contribution: </label>
                     <br>
-                    <label for="interest-rate">Interest Rate: </label>
+                    <label>Interest Rate: </label>
                     <br>
-                    <label for="years-of-growth">Years Of Growth: </label>
+                    <label>Years Of Growth: </label>
                 </div>
 
                 <div class="inputs">
-                    <input onchange="calculateInvestment()" type="text" id="startAmount" name="startAmountInput">
+                    <input required onchange="calculateInvestment()" type="number" min="0" id="startAmount" name="Start Amount">
                     <br>
-                    <input onchange="calculateInvestment()" type="text" id="contribution" name="contribution">
+                    <input required onchange="calculateInvestment()" type="number" min="0" id="contribution" name="Contribution">
                     <br>
-                    <input onchange="calculateInvestment()" type="text" id="interest-rate" name="interest-rateInput">
+                    <input required onchange="calculateInvestment()" type="number"  min="0" id="interest-rate" name="Interest Rate">
                     <br>
-                    <input onchange="calculateInvestment()" type="text" id="years-of-growth" name="years-of-growthInput">
+                    <input required onchange="calculateInvestment()" type="number"  min="1" id="years-of-growth" name="Years Of Growth">
                 </div>
 
                 <div class="everyContributionDiv">
                     <br>
-                    <label id="everyContribution" for="date-select">every</label>
+                    <label id="everyContribution" for="date">every</label>
                     <select onchange="calculateInvestment()" name="date" id="date-select">
                         <option value="year">Year</option>
                         <option value="month">Month</option>
@@ -42,12 +42,14 @@
                     </select>
                 </div>
             </form>
-            <button type="button" id="button" class="introAnimation" onclick="calculateInvestment()">Submit</button>
+            <button type="submit" value="Submit" id="button" class="introAnimation" onclick="calculateInvestment()">Submit</button>
         </header>
         <!-- totals -->
         <div id="totalsDiv"></div>
         <!--bar chart-->
-        <canvas id="barChart"></canvas>
+        <div id="barChartDiv"></div>
+        <!-- pie chart -->
+        <div id="pieChartDiv"></div>
         <!--table log-->
         <div id="tableDiv"></div>
     </body>

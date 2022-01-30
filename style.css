@@ -145,6 +145,12 @@ button:hover {
     background-color: rgb(97, 172, 113);
 }
 
+.hidden {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
 #tableOfTotals {
     margin-bottom: 15px;
     position: relative;
@@ -153,9 +159,18 @@ button:hover {
 #barChart {
     width: 100%;
     height: 100%;
-    max-width: 900px;
-    max-height: 900px;
+    max-width: 1200px;
+    max-height: 1200px;
     margin: 0 auto;
+    position: relative;
+}
+
+#pieChart {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 180px;
+    margin: 30px auto;
     position: relative;
 }
 

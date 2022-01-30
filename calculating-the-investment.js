@@ -1,7 +1,9 @@
 //all divs and charts saved to varibles
-var chart;
+var pieChart;
+var barChart;
 var totalDiv = document.getElementById('totalsDiv');
-var ctx = document.getElementById('barChart').getContext('2d');
+var pieDiv = document.getElementById('pieChartDiv');
+var barDiv = document.getElementById('barChartDiv');
 var tableDiv = document.getElementById('tableDiv');
 
 function calculateInvestment() {
@@ -48,14 +50,21 @@ function calculateInvestment() {
                 interestArray.push(Math.round(((amountArray[i] * (interestRate / 100) + (contributionConvered * (interestRate / 100))) * 100)) / 100);
             }
 
+            //needed for total table + pie chart
+            var totalInterest = 0;
+            var skipFirstNumber = false;
+            interestArray.forEach(num => {if (skipFirstNumber){totalInterest += parseFloat(num);} else {skipFirstNumber = true;}});
+
             //chart/log all the other data in other functions
-            totals(amountArray, contributionConvered, interestArray);
-            chartData(amountArray, labelArray);
-            logData(interestRate, contributionConvered, amountArray, interestArray);
+            totals(amountArray, contributionConvered, totalInterest);  //totals table
+            pieChartFunction(amountArray, contributionConvered, totalInterest);
+            barChartFunction(amountArray, labelArray);  //bar chart
+            logData(interestRate, contributionConvered, amountArray, interestArray);  //log table
             
             //animation
             totalDiv.setAttribute('class', 'submitAnimation');
-            ctx.setAttribute('class', 'submitAnimation');
+            pieDiv.setAttribute('class', 'submitAnimation');
+            barDiv.setAttribute('class', 'submitAnimation');
             tableDiv.setAttribute('class', 'submitAnimation');
         } 
     }
@@ -71,15 +80,12 @@ function calculateInvestment() {
 }
 
 //sums and give ths total amount by the end of the investment
-function totals(amountArray, contributionConvered, interestArray) {
+function totals(amountArray, contributionConvered, totalInterest) {
     var length = amountArray.length - 1;
     var yearString = (length) === 1 ? 'Year' : 'Years';
-    var totalInterest = 0;
-    var skipFirstNumber = false;
 
-    interestArray.forEach(num => {if (skipFirstNumber){totalInterest += parseFloat(num);} else {skipFirstNumber = true;}});
     //creates the totals table with inner html in the totalDiv
-    var  html = '<table id="tableOfTotals">'; 
+    var html = '<table id="tableOfTotals">'; 
         html += '<tr>';
             html += `<th>${yearString}: ${addCommas(length)}</th>`
             html += `<th>Total Contributed: $${addCommas((length) * contributionConvered)}</th>`
@@ -90,12 +96,16 @@ function totals(amountArray, contributionConvered, interestArray) {
     totalDiv.innerHTML = html;
 }
 
+
 //puts data into the bar chart
-function chartData(amountArray, labelArray){
-    if(chart != undefined) {
-        chart.destroy();
+function barChartFunction(amountArray, labelArray){
+    barDiv.innerHTML = '<canvas id="barChart"></canvas>';
+    
+    var ctxBar = document.getElementById('barChart').getContext('2d');
+    if(barChart != undefined) {
+        barChart.destroy();
     }
-    chart = new Chart(ctx, {
+    barChart = new Chart(ctxBar, {
         type: 'bar',
         data: {
             labels: labelArray,
@@ -120,6 +130,39 @@ function chartData(amountArray, labelArray){
                     beginAtZero: true
                 }
             }
+        }
+    });
+}
+
+function pieChartFunction(amountArray, contribution, totalInterest) {
+    pieDiv.innerHTML = '<canvas id="pieChart"></canvas>';
+
+    var ctxPie = document.getElementById('pieChart');
+    if(pieChart != undefined) {
+        pieChart.destroy();
+    }
+    pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ['Start Amount','Total Contributed', 'Earned Interest'],
+            datasets: [{
+                label: '$',  //should get rid of the ':' in the label
+                data: [amountArray[0], (amountArray.length - 1) * contribution, totalInterest],
+                backgroundColor: [
+                    'rgba(201, 93, 99, 1)',
+                    'rgba(49, 73, 59, 1)',
+                    'rgba(51, 92, 215, 1)'
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0, .1)'
+                ],
+                borderWidth: 1,
+                hoverBorderWidth: 2,
+                hoverBorderColor: 'rgba(255, 255, 255, .3)'
+            }]
+        },
+        options: {
+            responsive: true
         }
     });
 }
