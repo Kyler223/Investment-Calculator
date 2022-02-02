@@ -1,3 +1,75 @@
+html {
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 900px) {
+    html {
+        font-size: 15px;
+    }
+    input {
+        max-height: 1.05rem;
+    }
+    #barChartDiv {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    html {
+        font-size: 14px;
+    }
+    input {
+        max-height: 1.04rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    html {
+        font-size: 13px;
+    }
+    input {
+        max-height: 1.03rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    html {
+        font-size: 12px;
+    }
+    input {
+        font-size: 1rem;
+        max-height: 1.02rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    html {
+        font-size: 11px;
+    }
+    input {
+        max-height: 1rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    html {
+        font-size: 10px;
+    }
+    input {
+        max-height: .83rem;
+        max-width: 7rem;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    html {
+        font-size: 9px;
+    }
+    input {
+        max-height: .83rem;
+    }
+}
+
 body {
     font-family: Verdana;
     background-color: rgb(43, 42, 51);
@@ -28,41 +100,40 @@ form {
 .labels {
     color: white;
     text-align: right;
-    line-height: 29.6px;
+    line-height: 1.85rem;
 }
 
 .inputs {
-    font-size: 17px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 2px;
+    font-size: 1.1rem;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    padding-top: 0.125rem;
 }
 
 .everyContributionDiv {
-    padding-top: 13px;
+    padding-top: 0.8125rem;
     color: white;
 }
 
 .labels, .inputs, .everyContributionDiv {
-    margin: 12px 0;
+    margin: 0.75rem 0;
 }
 
 input {
-    font-size: 14px;
-    inline-size: 130px;
-    margin-bottom: 4.5px;
+    inline-size: 8.125rem;
+    margin-bottom: 0.281rem;
 }
 
 select {
-    font-size: 14px;
-    margin-left: 5px;
-    padding: 1px;
+    font-size: .85rem;
+    margin-left: 0.3125rem;
+    padding: 0.0625rem;
 }
 
 /* submit button */
 button {
     font-family: Verdana;
-    font-size: 15px;
+    font-size: .95rem;
     color: black;
     background-color: rgb(117, 206, 136);
     border: none;
@@ -88,7 +159,7 @@ button:hover {
 }
 
 #tableOfTotals {
-    margin-bottom: 15px;
+    margin-bottom: 1.1rem;
     position: relative;
 }
 
@@ -115,7 +186,7 @@ table {
     border-collapse: separate;
     border: 2px solid gray;
     border-radius: 8px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 
 #tableDiv {
