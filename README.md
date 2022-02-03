@@ -5,4 +5,4 @@ Website is here (so you don't have to download): https://investment-calculator-r
 
         ~RomeTwinn 2/2/22
 
-![Alt text](screenshot3.png "a screenshot of the investment calculator")
+![Alt text](screenshot4.png "a screenshot of the investment calculator")
