@@ -149,9 +149,9 @@ function pieChartFunction(amountArray, contribution, totalInterest) {
                 label: '$',  //should get rid of the ':' in the label
                 data: [amountArray[0], (amountArray.length - 1) * contribution, totalInterest],
                 backgroundColor: [
-                    'rgba(201, 93, 99, 1)',
-                    'rgba(49, 73, 59, 1)',
-                    'rgba(51, 92, 215, 1)'
+                    '#335CD7',
+                    '#B3424F',
+                    '#2D4F34'
                 ],
                 borderColor: [
                     'rgba(0, 0, 0, .1)'
