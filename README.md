@@ -2,7 +2,4 @@ I wanted a investment calculator that didn't restrict me with "you can't put it 
 
 Website is here (so you don't have to download): https://investment-calculator-rho.vercel.app/
 
-
-        ~RomeTwinn 2/2/22
-
-![Alt text](screenshot4.png "a screenshot of the investment calculator")
+![Alt text](screenshot5.png "a screenshot of the investment calculator")
