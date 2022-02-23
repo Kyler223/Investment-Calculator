@@ -3,9 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Investment Calculator</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <!-- chart.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+        <!-- local script -->
         <script type = "text/javascript" src="calculating-the-investment.js" defer></script>  
     </head>
     <body>
@@ -34,6 +36,7 @@
                 <div class="everyContributionDiv">
                     <br>
                     <label id="everyContribution" for="date">every</label>
+                    <!-- dropdown -->
                     <select onchange="calculateInvestment()" name="date" id="date-select">
                         <option value="year">Year</option>
                         <option value="month">Month</option>
@@ -44,13 +47,15 @@
             </form>
             <button type="submit" value="Submit" id="button" class="introAnimation" onclick="calculateInvestment()">Submit</button>
         </header>
-        <!-- totals -->
-        <div id="totalsDiv"></div>
-        <!--bar chart-->
-        <div id="barChartDiv"></div>
-        <!-- pie chart -->
-        <div id="pieChartDiv"></div>
-        <!--table log-->
-        <div id="tableDiv"></div>
+        <main>
+            <!-- totals -->
+            <div id="totalsDiv"></div>
+            <!--bar chart-->
+            <div id="barChartDiv"></div>
+            <!-- pie chart -->
+            <div id="pieChartDiv"></div>
+            <!--table log-->
+            <div id="tableDiv"></div>
+        </main>
     </body>
 </html>
