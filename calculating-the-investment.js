@@ -202,48 +202,7 @@ function logData(interestRate, contribution, amountArray, interestArray) {
     tableDiv.innerHTML = html;
 }
 
-//edit 2-26-22: I didn't know this was a function until now. So below I did it by hand lol
+//adds commas to every +4 digit numbers
 function addCommas(number) {
     return new Intl.NumberFormat().format(number);
 }
-
-// //adds commas to +4 digit numbers so it's easier to read
-// function addCommas(number) {
-//     if (parseFloat(number) >= 1000) {
-//         var newNumber = '';
-//         var decimal;
-//         var digits = 0;
-//         var numberStr = number.toString();
-
-//         if (numberStr.includes('.')) {      //checks if it has cents/a decimal and adds it on the end later
-//             decimal = numberStr.split('.');
-//             digits = decimal[0].length;
-//             numberStr = decimal[0];
-//         }
-//         else {
-//             digits = numberStr.length;
-//         }
-
-//         var reverse = numberStr.split('').reverse().join('');  //reverses the string to add the commas from the start of the number
-
-//         //for loop checks if it has 4 more digits to add another comma
-//         for (var i = 3; i + 1 <= digits; i = i + 3) {
-//             newNumber += `${reverse[i - 3]}${reverse[i - 2]}${reverse[i - 1]},`
-//             //if it doens't have 4 more digits then, add the rest of the digits
-//             if(i + 4 > digits) {
-//                 if(reverse[i] != undefined) {newNumber += `${reverse[i]}`;}
-//                 if(reverse[i + 1] != undefined) {newNumber += `${reverse[i + 1]}`;}
-//                 if(reverse[i + 2] != undefined) {newNumber += `${reverse[i + 2]}`;}
-//             }
-//         }
-
-//         newNumber = newNumber.split('').reverse().join('');  //unreverse so it's the correct way
-
-//         if (decimal != undefined) {
-//             newNumber += `.${decimal[1]}`; //add the decimal/cents back in
-//         }
-
-//         return newNumber;
-//     }
-//     return number;
-// }
