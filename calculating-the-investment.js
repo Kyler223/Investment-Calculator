@@ -55,6 +55,9 @@ function calculateInvestment() {
             var skipFirstNumber = false;
             interestArray.forEach(num => {if (skipFirstNumber){totalInterest += parseFloat(num);} else {skipFirstNumber = true;}});
 
+            //to lower footer max height
+            document.getElementById("footer").classList.add('footer-max-height');
+            
             //chart/log all the other data in other functions
             totals(amountArray, contributionConvered, totalInterest);  //totals table
             pieChartFunction(amountArray, contributionConvered, totalInterest);
