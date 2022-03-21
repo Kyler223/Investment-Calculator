@@ -13,28 +13,15 @@
     <body>
         <header>
             <form id="form" class="introAnimation">
-                <div class="labels">
-                    <label id="startAmountLabel">Starting Amount: </label>
-                    <br>
-                    <label>Contribution: </label>
-                    <br>
-                    <label>Interest Rate: </label>
-                    <br>
-                    <label>Years Of Growth: </label>
-                </div>
-
-                <div class="inputs">
+                <div class="label-input-container">
+                    <label>Starting Amount: </label>
                     <input required onchange="calculateInvestment()" type="number" min="0" id="startAmount" name="Start Amount">
-                    <br>
-                    <input required onchange="calculateInvestment()" type="number" min="0" id="contribution" name="Contribution">
-                    <br>
-                    <input required onchange="calculateInvestment()" type="number"  min="0" id="interest-rate" name="Interest Rate">
-                    <br>
-                    <input required onchange="calculateInvestment()" type="number"  min="1" id="years-of-growth" name="Years Of Growth">
                 </div>
-
-                <div class="everyContributionDiv">
-                    <br>
+                <div class="label-input-container">
+                    <label>Contribution: </label>
+                    <input required onchange="calculateInvestment()" type="number" min="0" id="contribution" name="Contribution">
+                </div>
+                <div class="everyContributionDiv white">
                     <label id="everyContribution" for="date">every</label>
                     <!-- dropdown -->
                     <select onchange="calculateInvestment()" name="date" id="date-select">
@@ -43,6 +30,14 @@
                         <option value="week">Week</option>
                         <option value="day">Day</option>
                     </select>
+                </div>
+                <div class="label-input-container">
+                    <label>Interest Rate Percent: </label>
+                    <input required onchange="calculateInvestment()" type="number"  min="0" id="interest-rate" name="Interest Rate">
+                </div>
+                <div class="label-input-container">
+                    <label>Years Of Growth: </label>
+                    <input required onchange="calculateInvestment()" type="number"  min="1" id="years-of-growth" name="Years Of Growth">
                 </div>
             </form>
             <button type="submit" value="Submit" id="button" class="introAnimation" onclick="calculateInvestment()">Submit</button>

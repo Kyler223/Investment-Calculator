@@ -81,42 +81,43 @@ header {
 }
 
 form {
+    margin: 0 auto;
     margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
     max-width: 600px;
-    display: inline-block;
-    text-align: left;
     background-color: rgba(0, 0, 0, 0.16);
     border-radius: 20px;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     position: relative;
 }
 
-/* all 3 divs in the header */
-
-.labels {
-    color: white;
-    text-align: right;
-    line-height: 1.85rem;
+.label-input-container {
+    flex-basis: 60%;
+    max-width: 55%;
+    margin-left: 12%;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
 }
 
-.inputs {
-    font-size: 1.1rem;
-    padding-left: 0.9375rem;
-    padding-right: 0.9375rem;
-    padding-top: 0.125rem;
+label {
+    color: white;
+    text-align: right;
+    flex-wrap: nowrap;
+}
+
+.white {
+    color: white;
+}
+
+.break-column {
+    flex-basis: 100%;
+    width: 0;
 }
 
 .everyContributionDiv {
-    padding-top: 0.8125rem;
-    color: white;
-}
-
-.labels, .inputs, .everyContributionDiv {
-    margin: 0.75rem 0;
+    margin-left: 12px;
 }
 
 input {
@@ -146,6 +147,10 @@ button {
 
 button:hover {
     background-color: rgb(97, 172, 113);
+}
+
+button:active {
+    top: 1px;
 }
 
 .hidden {
