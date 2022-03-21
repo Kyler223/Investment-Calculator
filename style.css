@@ -83,6 +83,7 @@ header {
 form {
     margin: 0 auto;
     margin-top: 20px;
+    padding: 12px;
     max-width: 600px;
     background-color: rgba(0, 0, 0, 0.16);
     border-radius: 20px;
