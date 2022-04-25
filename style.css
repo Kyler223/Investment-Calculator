@@ -1,25 +1,10 @@
 html {
-    font-size: 16px;
+    font-size: 15px;
 }
 
-@media only screen and (max-width: 900px) {
-    html {
-        font-size: 15px;
-    }
-    input {
-        max-height: 1.05rem;
-    }
-    #barChartDiv {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 700px) {
     html {
         font-size: 14px;
-    }
-    input {
-        max-height: 1.04rem;
     }
 }
 
@@ -27,8 +12,22 @@ html {
     html {
         font-size: 13px;
     }
-    input {
-        max-height: 1.03rem;
+    #totalsDiv {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    #totalsDiv tr th{
+        padding: 5px;
+    }
+    #tableDiv {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    #tableOfData tbody tr th{
+        padding: 5px;
+    }
+    #tableOfData tbody tr td{
+        padding: 5px;
     }
 }
 
@@ -36,63 +35,61 @@ html {
     html {
         font-size: 12px;
     }
-    input {
-        font-size: 1rem;
-        max-height: 1.02rem;
-    }
 }
 
 @media only screen and (max-width: 500px) {
+    .label-input-container {
+        flex-basis: 100% !important;
+        max-width: 100% !important;
+        margin: 7px 20vw;
+        gap: 1vw !important;
+    }
+    label {
+        margin: auto 0;
+    }
     input {
-        max-height: 1rem;
-        max-width: 70px;
+        max-height: 1.2rem;
+        max-width: 14vw;
         padding: 0;
         margin: 0;
+        min-width: 45px;
     }
     select {
         font-size: .6rem;
-        margin-left: 0.2rem;
-        padding: 0.03rem;
-        max-width: 45px;
+        max-height: 1.4rem;
+        width: 14.8vw;
+        min-width: 45px;
     }
     .everyContributionDiv {
-        margin: 0;
-        padding: 0;
+        display: flex;
+        flex-basis: 100% !important;
+        max-width: 100% !important;
+        margin: 7px 20vw;
+        gap: 1vw !important;
+        justify-content: flex-end;
     }
 }
 
-@media only screen and (max-width: 450px) {
-    input {
-        max-height: .83rem;
-        max-width: 55px;
+@media only screen and (max-width: 330px) {
+    .label-input-container {
+        margin: 7px 13vw;
+        gap: .5vw !important;
+    }
+    .everyContributionDiv {
+        margin: 7px 13vw;
+        gap: .5vw !important;
     }
 }
 
-@media only screen and (max-width: 430px) {
-    input {
-        max-width: 40px;
+@media only screen and (max-width: 295px) {
+    .label-input-container {
+        margin: 7px 5vw;
+    }
+    .everyContributionDiv {
+        margin: 7px 5vw;
     }
 }
 
-@media only screen and (max-width: 400px) {
-    input {
-        max-width: 30px;
-    }
-    select {
-        font-size: .6rem;
-        margin-left: 0px;
-        padding: 0.02rem;
-        max-width: 20px;
-    }
-}
-
-
-
-@media only screen and (max-width: 300px) {
-    input {
-        max-height: .83rem;
-    }
-}
 
 body {
     font-family: Verdana;
@@ -185,7 +182,7 @@ button:active {
 }
 
 #totalsDiv {
-    margin: 0 2%;
+    margin: 0 2vw;
 }
 
 #tableOfTotals {
