@@ -2,36 +2,76 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="Simple Investment Calculator, Investment Calculator, Calculator, Stocks, ROI Calculator, Intrest Calculator, Compound Calculator">
-        <meta name="description" content="A simple calculator to see future returns on investments.">
+        <meta name="viewport" 
+            content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" 
+            content="Simple Investment Calculator, Investment Calculator, Calculator, 
+            Stocks, ROI Calculator, Intrest Calculator, Compound Calculator">
+        <meta name="description" 
+            content="A simple calculator to see future returns on investments.">
         <meta name="author" content="Kyler Nelson">
         <meta name="theme-color" content="rgb(43, 42, 51)"/>
         <title>Investment Calculator</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="style.css" rel="stylesheet" type="text/css">
         <!-- favicons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-        <link rel="manifest" href="favicons/site.webmanifest">
-        <!-- script -->
-        <script defer type = "text/javascript" src="calculating-the-investment.js"></script>
-        <!-- chart.js -->
-        <script defer src="chart.min.js"></script>
+        <link href="favicons/apple-touch-icon.png" 
+            rel="apple-touch-icon" 
+            sizes="180x180">
+        <link href="favicons/favicon-32x32.png" 
+            rel="icon" 
+            type="image/png" 
+            sizes="32x32">
+        <link href="favicons/favicon-16x16.png" 
+            rel="icon" 
+            type="image/png" 
+            sizes="16x16">
+        <link href="favicons/site.webmanifest" 
+            rel="manifest">
+        <!-- javascript -->
+        <script>
+            window.addEventListener("load", function(){
+                var scriptSrcs = 
+                ["calculating-the-investment.js", "chart.min.js"];
+                for (var i = 0; i < scriptSrcs.length; i++) {
+                    var element = document.createElement("script");
+                    element.src = scriptSrcs[i];
+                    element.type = "text/javascript";
+                    document.body.appendChild(element);
+                }
+            });
+        </script>
     </head>
     <body style="font-family: Verdana;background-color: rgb(43, 42, 51);">
         <header>
+            <noscript>
+                <p style="color:red;font-size:20px">Javascript needs to be enabled to interact with this page.</p>
+            </noscript>
             <form id="form" class="introAnimation">
                 <div class="label-input-container">
                     <label>Starting Amount:</label>
-                    <input required onchange="calculateInvestment()" type="number" min="0" id="startAmount" name="Start Amount" aria-label="Start Amount">
+                    <input required 
+                        onchange="calculateInvestment()" 
+                        type="number" 
+                        min="0" 
+                        id="startAmount" 
+                        name="Start Amount" 
+                        aria-label="Start Amount">
                 </div>
                 <div class="label-input-container">
                     <label>Contribution:</label>
-                    <input required onchange="calculateInvestment()" type="number" min="0" id="contribution" name="Contribution" aria-label="Contribution">
+                    <input required 
+                        onchange="calculateInvestment()" 
+                        type="number" 
+                        min="0" 
+                        id="contribution" 
+                        name="Contribution" 
+                        aria-label="Contribution"
+                    />
                 </div>
                 <div class="everyContributionDiv white">
-                    <label id="everyContribution" for="date">every</label>
+                    <label id="everyContribution" for="date">
+                        every
+                    </label>
                     <!-- dropdown -->
                     <select onchange="calculateInvestment()" name="date" id="date-select">
                         <option value="year">Year</option>
@@ -42,14 +82,34 @@
                 </div>
                 <div class="label-input-container">
                     <label>Interest Rate Percent:</label>
-                    <input required onchange="calculateInvestment()" type="number"  min="0" id="interest-rate" name="Interest Rate" aria-label="Interest Rate Percent">
+                    <input required 
+                        onchange="calculateInvestment()" 
+                        type="number"  
+                        min="0" 
+                        id="interest-rate" 
+                        name="Interest Rate" 
+                        aria-label="Interest Rate Percent"
+                    />
                 </div>
                 <div class="label-input-container">
                     <label>Years Of Growth:</label>
-                    <input required onchange="calculateInvestment()" type="number"  min="1" id="years-of-growth" name="Years Of Growth" aria-label="Years Of Growth">
+                    <input required 
+                        onchange="calculateInvestment()" 
+                        type="number"  
+                        min="1" 
+                        id="years-of-growth" 
+                        name="Years Of Growth" 
+                        aria-label="Years Of Growth"
+                    />
                 </div>
             </form>
-            <button type="submit" value="Submit" id="button" class="introAnimation" onclick="calculateInvestment()">Submit</button>
+            <button type="submit" 
+                value="Submit" 
+                id="button" 
+                class="introAnimation" 
+                onclick="calculateInvestment()">
+                Submit
+            </button>
         </header>
         <main>
             <!-- totals -->
